@@ -135,7 +135,7 @@
 		var msg = $("#myModal");
 
 		if (result === 'SUCCESS') {
-			$(".modal-body").html("등록되었습니다!");
+			$(".modal-body").html("작업성공!");
 			msg.modal('show');
 		}
 

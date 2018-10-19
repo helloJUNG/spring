@@ -41,4 +41,16 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.get(param);
 	}
 
+	@Override
+	public int remove(PageParam param) {
+		// TODO Auto-generated method stub
+		return mapper.delete(param);
+	}
+
+	@Override
+	public int modify(Board board) {
+		// TODO Auto-generated method stub
+		return mapper.update(board);
+	}
+
 }

@@ -18,23 +18,33 @@
 			<div class="panel-heading">Board Read</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<form role="form"  method="post">
-					<div class="form-group" >
-						<label>Title</label> <input class="form-control" name="title" value="<c:out value="${board.title}"></c:out>" readonly="readonly">
-						<p class="help-block">Example block-level help text here.</p>
-					</div>
-					<div class="form-group">
-						<label>Writer</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"></c:out>" readonly="readonly">
-						<p class="help-block">Example block-level help text here.</p>
-					</div>
 
-					<div class="form-group">
-						<label>Content</label>
-						<textarea class="form-control" name="content"  rows="3" readonly="readonly"><c:out value="${board.content}"/></textarea>
-					</div>
+				<div class="form-group">
+					<label>Title</label> <input class="form-control" name="title"
+						value="<c:out value="${board.title}"></c:out>" readonly="readonly">
+					<p class="help-block">Example block-level help text here.</p>
+				</div>
+				<div class="form-group">
+					<label>Writer</label> <input class="form-control" name="writer"
+						value="<c:out value="${board.writer}"></c:out>"
+						readonly="readonly">
+					<p class="help-block">Example block-level help text here.</p>
+				</div>
 
-					<button type="submit" class="btn btn-default">Submit Button</button>
-					<button type="reset" class="btn btn-default">Reset Button</button>
+				<div class="form-group">
+					<label>Content</label>
+					<textarea class="form-control" name="content" rows="3"
+						readonly="readonly"><c:out value="${board.content}" /></textarea>
+				</div>
+
+				<form role="form" action="/board/list" method="get">
+					<input type="hidden" name="page" value="${pageObj.page}">
+					<button type="submit" class="btn btn-default">List Button</button>
+				</form>
+				<form role="form" action="/board/modify" method="get">
+					<input type="hidden" name="page" value="${pageObj.page}"> <input
+						type="hidden" name="bno" value="${pageObj.bno}">
+					<button type="submit" class="btn btn-default">Modify</button>
 				</form>
 
 			</div>
@@ -46,8 +56,59 @@
 
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 
 <%@include file="../includes/footer.jsp"%>
+
+<script>
+	$(document).ready(function() {
+
+		var result = '<c:out value="${result}"/>';
+
+		var msg = $("#myModal");
+
+		checkModal(result)
+
+		history.replaceState({}, null, null);
+
+		function checkModal(result) {
+
+			if (result === '' || history.state) {
+				return;
+			}
+
+			if (parseInt(result) > 0) {
+				$(".modal-body").html("작업성공!");
+			}
+
+			if (result === 'SUCCESS') {
+				$(".modal-body").html("작업성공!");
+				msg.modal('show');
+			}
+		}
+	});
+</script>
 
 </body>
 

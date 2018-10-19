@@ -18,7 +18,7 @@
 			<div class="panel-heading">Board Register</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<form role="form"  method="post">
+				<form role="form"  action="/board/register" method="post">
 					<div class="form-group" >
 						<label>Title</label> <input class="form-control" name="title" value="sample title">
 						<p class="help-block">Example block-level help text here.</p>
@@ -34,7 +34,7 @@
 					</div>
 
 					<button type="submit" class="btn btn-default">Submit Button</button>
-					<button type="reset" class="btn btn-default">Reset Button</button>
+					
 				</form>
 
 			</div>
