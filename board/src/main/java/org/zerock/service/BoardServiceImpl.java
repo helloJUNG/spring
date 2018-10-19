@@ -29,4 +29,16 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getList(param);
 	}
 
+	@Override
+	public int getTotal() {
+		// TODO Auto-generated method stub
+		return mapper.count();
+	}
+
+	@Override
+	public Board get(PageParam param) {
+		// TODO Auto-generated method stub
+		return mapper.get(param);
+	}
+
 }

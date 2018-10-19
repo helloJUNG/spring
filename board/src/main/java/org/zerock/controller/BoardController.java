@@ -22,10 +22,17 @@ public class BoardController {
 	
 	private BoardService service;
 	
+	@GetMapping("/read")
+	public void read(@ModelAttribute("pageObj")PageParam pageParam, Model model) { //화면에 무엇을 나타낼때 model
+		log.info("list page...");
+		
+		model.addAttribute("board",service.get(pageParam));
+	}
+	
 	@GetMapping("/list")
 	public void list(@ModelAttribute("pageObj")PageParam pageParam, Model model) { //화면에 무엇을 나타낼때 model
 		log.info("list page...");
-		pageParam.setTotal(123);
+		pageParam.setTotal(service.getTotal());
 		model.addAttribute("list",service.getList(pageParam));
 	}
 	

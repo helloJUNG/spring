@@ -9,7 +9,7 @@ public class PageParam {
 	private int page;
 	private int display;
 	
-	private int total,start,end;
+	private int total,start,end,bno;
 	
 	private boolean prev,next;
 	
