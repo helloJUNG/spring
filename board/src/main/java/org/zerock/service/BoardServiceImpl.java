@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Board;
+import org.zerock.domain.PageParam;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -15,16 +16,17 @@ public class BoardServiceImpl implements BoardService {
 
 	private BoardMapper mapper;
 	
-	@Override
-	public List<Board> getAll() {
-		// TODO Auto-generated method stub
-		return mapper.getListAll();
-	}
 
 	@Override
 	public int register(Board board) {
 		// TODO Auto-generated method stub
 		return mapper.insert(board);
+	}
+
+	@Override
+	public List<Board> getList(PageParam param) {
+		// TODO Auto-generated method stub
+		return mapper.getList(param);
 	}
 
 }
